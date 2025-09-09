@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoEvolution - Waste Segregation Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="leaf leaf1">🍃</div>
+        <div class="leaf leaf2">🍃</div>
+        <div class="leaf leaf3">🍃</div>
+        <div class="leaf leaf4">🍃</div>
+        <div class="leaf leaf5">🍃</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="eco">🌱 EcoEvolution</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" onclick="showPanel('home')">Home</button>
+                <button class="nav-btn" onclick="showPanel('citizen')">Citizens</button>
+                <button class="nav-btn" onclick="showPanel('worker')">Workers</button>
+                <button class="nav-btn" onclick="showPanel('government')">Government</button>
+                <button class="nav-btn" onclick="showPanel('rewards')">Rewards</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Panel -->
+    <div id="home" class="panel active">
+        <div class="hero">
+            <div class="container">
+                <h1 class="hero-title">Transform India's Waste Management</h1>
+                <p class="hero-subtitle">Together, we can achieve 100% scientific waste treatment and build a cleaner, greener India</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1.7L</div>
+                        <div class="stat-label">Tonnes Daily Waste</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">54%</div>
+                        <div class="stat-label">Currently Treated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">46%</div>
+                        <div class="stat-label">Needs Intervention</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="container">
+                <h2 class="section-title">Choose Your Access Panel</h2>
+                <div class="access-grid">
+                    <div class="access-card" onclick="showPanel('citizen')">
+                        <div class="access-icon">👥</div>
+                        <h3>Citizens Portal</h3>
+                        <p>Learn waste segregation, track collections, earn rewards</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                    <div class="access-card" onclick="showPanel('worker')">
+                        <div class="access-icon">👷</div>
+                        <h3>Workers Portal</h3>
+                        <p>Training modules, safety guidelines, schedule management</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                    <div class="access-card" onclick="showPanel('government')">
+                        <div class="access-icon">🏛️</div>
+                        <h3>Government Portal</h3>
+                        <p>Monitor progress, analytics, policy implementation</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                    <div class="access-card" onclick="showPanel('rewards')">
+                        <div class="access-icon">🏆</div>
+                        <h3>Rewards System</h3>
+                        <p>View achievements, redeem points, leaderboards</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Citizens Panel -->
+    <div id="citizen" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>🏠 Citizens Portal</h1>
+                <p>Your journey to responsible waste management starts here</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>🗂️ Waste Segregation Guide</h3>
+                    <div class="waste-types">
+                        <div class="waste-type green">
+                            <div class="bin-icon">🟢</div>
+                            <div>
+                                <strong>Wet Waste</strong>
+                                <p>Kitchen scraps, food remains, garden waste</p>
+                            </div>
+                        </div>
+                        <div class="waste-type blue">
+                            <div class="bin-icon">🔵</div>
+                            <div>
+                                <strong>Dry Waste</strong>
+                                <p>Paper, plastic, metal, glass items</p>
+                            </div>
+                        </div>
+                        <div class="waste-type red">
+                            <div class="bin-icon">🔴</div>
+                            <div>
+                                <strong>Hazardous Waste</strong>
+                                <p>Batteries, medicines, chemicals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📅 Collection Schedule</h3>
+                    <div class="schedule">
+                        <div class="schedule-item">
+                            <span class="day">Mon, Wed, Fri</span>
+                            <span class="time">7:00 AM</span>
+                            <span class="type">Wet Waste</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day">Tue, Thu, Sat</span>
+                            <span class="time">7:00 AM</span>
+                            <span class="type">Dry Waste</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">8:00 AM</span>
+                            <span class="type">Hazardous</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🏆 Your Impact</h3>
+                    <div class="impact-stats">
+                        <div class="impact-item">
+                            <span class="impact-number">150</span>
+                            <span class="impact-label">Days Streak</span>
+                        </div>
+                        <div class="impact-item">
+                            <span class="impact-number">2.5kg</span>
+                            <span class="impact-label">Composted</span>
+                        </div>
+                        <div class="impact-item">
+                            <span class="impact-number">450</span>
+                            <span class="impact-label">Eco Points</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📱 Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="openModal('training')">📚 Take Training</button>
+                        <button class="action-btn" onclick="openModal('compost')">🌱 Compost Kit</button>
+                        <button class="action-btn" onclick="openModal('report')">📸 Report Dumping</button>
+                        <button class="action-btn" onclick="openModal('track')">🚛 Track Vehicle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workers Panel -->
+    <div id="worker" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>👷 Workers Portal</h1>
+                <p>Professional training and safety resources for waste management workers</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>🎓 Training Modules</h3>
+                    <div class="training-list">
+                        <div class="training-item completed">
+                            <span class="status">✅</span>
+                            <div>
+                                <strong>Basic Safety Protocols</strong>
+                                <p>Completed on Jan 15, 2024</p>
+                            </div>
+                        </div>
+                        <div class="training-item current">
+                            <span class="status">📚</span>
+                            <div>
+                                <strong>Waste Segregation Techniques</strong>
+                                <p>In Progress - 60% Complete</p>
+                            </div>
+                        </div>
+                        <div class="training-item pending">
+                            <span class="status">⏳</span>
+                            <div>
+                                <strong>Equipment Maintenance</strong>
+                                <p>Starts Feb 1, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🛡️ Safety Gear Status</h3>
+                    <div class="safety-grid">
+                        <div class="safety-item available">
+                            <div class="safety-icon">🥽</div>
+                            <span>Safety Goggles</span>
+                            <span class="status-badge">Available</span>
+                        </div>
+                        <div class="safety-item available">
+                            <div class="safety-icon">🧤</div>
+                            <span>Protective Gloves</span>
+                            <span class="status-badge">Available</span>
+                        </div>
+                        <div class="safety-item maintenance">
+                            <div class="safety-icon">👕</div>
+                            <span>Safety Vest</span>
+                            <span class="status-badge">Under Maintenance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📋 Today's Schedule</h3>
+                    <div class="schedule">
+                        <div class="schedule-item">
+                            <span class="time">6:00 AM</span>
+                            <span class="location">Sector 15-18</span>
+                            <span class="task">Wet Waste Collection</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">10:00 AM</span>
+                            <span class="location">Commercial Area</span>
+                            <span class="task">Dry Waste Collection</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">2:00 PM</span>
+                            <span class="location">Processing Plant</span>
+                            <span class="task">Waste Processing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📊 Performance Metrics</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span class="metric-label">Collection Efficiency</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 92%"></div>
+                            </div>
+                            <span class="metric-value">92%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Safety Score</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 95%"></div>
+                            </div>
+                            <span class="metric-value">95%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Government Panel -->
+    <div id="government" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>🏛️ Government Portal</h1>
+                <p>Monitor, analyze, and implement waste management policies</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>📊 City-wide Analytics</h3>
+                    <div class="analytics-grid">
+                        <div class="analytics-item">
+                            <div class="analytics-number">76%</div>
+                            <div class="analytics-label">Source Segregation</div>
+                            <div class="trend up">↑ 12%</div>
+                        </div>
+                        <div class="analytics-item">
+                            <div class="analytics-number">1,245</div>
+                            <div class="analytics-label">Trained Citizens</div>
+                            <div class="trend up">↑ 8%</div>
+                        </div>
+                        <div class="analytics-item">
+                            <div class="analytics-number">89%</div>
+                            <div class="analytics-label">Collection Rate</div>
+                            <div class="trend down">↓ 3%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🌍 Green Champions Network</h3>
+                    <div class="champions-map">
+                        <div class="zone active">
+                            <span class="zone-name">Zone A</span>
+                            <span class="champion-count">15 Champions</span>
+                            <span class="zone-status active">Active</span>
+                        </div>
+                        <div class="zone active">
+                            <span class="zone-name">Zone B</span>
+                            <span class="champion-count">12 Champions</span>
+                            <span class="zone-status active">Active</span>
+                        </div>
+                        <div class="zone inactive">
+                            <span class="zone-name">Zone C</span>
+                            <span class="champion-count">8 Champions</span>
+                            <span class="zone-status needs-attention">Needs Attention</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🏭 Facility Status</h3>
+                    <div class="facility-list">
+                        <div class="facility-item operational">
+                            <span class="facility-icon">⚡</span>
+                            <div>
+                                <strong>Waste-to-Energy Plant</strong>
+                                <p>Processing: 45 TPD | Status: Operational</p>
+                            </div>
+                        </div>
+                        <div class="facility-item operational">
+                            <span class="facility-icon">♻️</span>
+                            <div>
+                                <strong>Recycling Center</strong>
+                                <p>Processing: 32 TPD | Status: Operational</p>
+                            </div>
+                        </div>
+                        <div class="facility-item maintenance">
+                            <span class="facility-icon">🌱</span>
+                            <div>
+                                <strong>Compost Plant</strong>
+                                <p>Processing: 0 TPD | Status: Under Maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>⚠️ Alert Management</h3>
+                    <div class="alert-list">
+                        <div class="alert-item high">
+                            <span class="alert-level">🔴</span>
+                            <div>
+                                <strong>Landfill Capacity</strong>
+                                <p>Zone C landfill at 95% capacity</p>
+                            </div>
+                        </div>
+                        <div class="alert-item medium">
+                            <span class="alert-level">🟡</span>
+                            <div>
+                                <strong>Collection Delay</strong>
+                                <p>Sector 22 experiencing collection delays</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewards Panel -->
+    <div id="rewards" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>🏆 Rewards & Recognition</h1>
+                <p>Celebrating environmental champions and sustainable practices</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>🎯 Your Achievements</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement earned">
+                            <div class="achievement-icon">🌟</div>
+                            <div class="achievement-info">
+                                <strong>Segregation Master</strong>
+                                <p>100 days perfect segregation</p>
+                            </div>
+                        </div>
+                        <div class="achievement earned">
+                            <div class="achievement-icon">♻️</div>
+                            <div class="achievement-info">
+                                <strong>Recycling Champion</strong>
+                                <p>50kg plastic recycled</p>
+                            </div>
+                        </div>
+                        <div class="achievement locked">
+                            <div class="achievement-icon">🌱</div>
+                            <div class="achievement-info">
+                                <strong>Compost Expert</strong>
+                                <p>Create 100kg compost</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>💰 EcoPoints Balance</h3>
+                    <div class="points-display">
+                        <div class="points-number">2,450</div>
+                        <div class="points-label">Available EcoPoints</div>
+                        <button class="redeem-btn" onclick="openModal('redeem')">Redeem Points</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🛍️ Reward Catalog</h3>
+                    <div class="rewards-catalog">
+                        <div class="reward-item">
+                            <div class="reward-icon">🌱</div>
+                            <div class="reward-info">
+                                <strong>Compost Kit</strong>
+                                <p>500 EcoPoints</p>
+                            </div>
+                            <button class="claim-btn">Claim</button>
+                        </div>
+                        <div class="reward-item">
+                            <div class="reward-icon">🎫</div>
+                            <div class="reward-info">
+                                <strong>Movie Voucher</strong>
+                                <p>1000 EcoPoints</p>
+                            </div>
+                            <button class="claim-btn">Claim</button>
+                        </div>
+                        <div class="reward-item">
+                            <div class="reward-icon">🌳</div>
+                            <div class="reward-info">
+                                <strong>Plant a Tree</strong>
+                                <p>800 EcoPoints</p>
+                            </div>
+                            <button class="claim-btn">Claim</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🏅 Leaderboard</h3>
+                    <div class="leaderboard">
+                        <div class="leaderboard-item rank-1">
+                            <span class="rank">🥇</span>
+                            <span class="name">Priya Sharma</span>
+                            <span class="points">5,240 pts</span>
+                        </div>
+                        <div class="leaderboard-item rank-2">
+                            <span class="rank">🥈</span>
+                            <span class="name">Raj Kumar</span>
+                            <span class="points">4,890 pts</span>
+                        </div>
+                        <div class="leaderboard-item rank-3">
+                            <span class="rank">🥉</span>
+                            <span class="name">Anita Desai</span>
+                            <span class="points">4,650 pts</span>
+                        </div>
+                        <div class="leaderboard-item current">
+                            <span class="rank">4</span>
+                            <span class="name">You</span>
+                            <span class="points">2,450 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
