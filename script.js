@@ -71,7 +71,30 @@ function setupEventListeners() {
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            const panel = this.textContent.toLowerCase().replace(' ', '');
+            const panelText = this.textContent.toLowerCase().trim();
+            let panel;
+            
+            // Map button text to panel IDs
+            switch(panelText) {
+                case 'home':
+                    panel = 'home';
+                    break;
+                case 'citizens':
+                    panel = 'citizen';
+                    break;
+                case 'workers':
+                    panel = 'worker';
+                    break;
+                case 'government':
+                    panel = 'government';
+                    break;
+                case 'rewards':
+                    panel = 'rewards';
+                    break;
+                default:
+                    panel = 'home';
+            }
+            
             showPanel(panel);
         });
     });
@@ -167,8 +190,18 @@ function updateNavButtons(activePanel) {
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
         btn.classList.remove('active');
-        const btnPanel = btn.textContent.toLowerCase().replace(' ', '');
-        if (btnPanel === activePanel || (activePanel === 'home' && btn.textContent === 'Home')) {
+        const btnText = btn.textContent.toLowerCase().trim();
+        
+        // Check if this button corresponds to the active panel
+        const isActive = (
+            (btnText === 'home' && activePanel === 'home') ||
+            (btnText === 'citizens' && activePanel === 'citizen') ||
+            (btnText === 'workers' && activePanel === 'worker') ||
+            (btnText === 'government' && activePanel === 'government') ||
+            (btnText === 'rewards' && activePanel === 'rewards')
+        );
+        
+        if (isActive) {
             btn.classList.add('active');
         }
     });
