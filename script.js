@@ -179,6 +179,12 @@ function showPanel(panelName) {
             case 'rewards':
                 updateRewardsPanel();
                 break;
+            case 'training':
+                updateTrainingPanel();
+                break;
+            case 'monitoring':
+                updateMonitoringPanel();
+                break;
         }
     }
 
@@ -198,6 +204,8 @@ function updateNavButtons(activePanel) {
             (btnText === 'citizens' && activePanel === 'citizen') ||
             (btnText === 'workers' && activePanel === 'worker') ||
             (btnText === 'government' && activePanel === 'government') ||
+            (btnText === 'ai training' && activePanel === 'training') ||
+            (btnText === 'live monitoring' && activePanel === 'monitoring') ||
             (btnText === 'rewards' && activePanel === 'rewards')
         );
         
@@ -376,6 +384,102 @@ function updateAchievements() {
     });
 }
 
+// Training Panel Functions
+function updateTrainingPanel() {
+    updateModuleProgress();
+    updateAIClassifierStats();
+    updateTrainingAnalytics();
+}
+
+function updateModuleProgress() {
+    // Simulate dynamic progress updates
+    const progressBars = document.querySelectorAll('#training .progress');
+    progressBars.forEach((bar, index) => {
+        if (index === 1) { // AI Classification module
+            const currentWidth = parseInt(bar.style.width) || 65;
+            if (currentWidth < 100) {
+                bar.style.width = Math.min(currentWidth + 1, 100) + '%';
+            }
+        }
+    });
+}
+
+function updateAIClassifierStats() {
+    // Update AI classifier statistics
+    const accuracyElement = document.querySelector('#training .stat-number');
+    if (accuracyElement && Math.random() > 0.9) {
+        const currentAccuracy = parseInt(accuracyElement.textContent);
+        if (currentAccuracy < 98) {
+            accuracyElement.textContent = (currentAccuracy + 1) + '%';
+        }
+    }
+}
+
+function updateTrainingAnalytics() {
+    // Update training completion rates
+    const completionBar = document.querySelector('#training .analytics-item .progress');
+    if (completionBar) {
+        const currentWidth = parseInt(completionBar.style.width) || 78;
+        if (currentWidth < 100) {
+            completionBar.style.width = Math.min(currentWidth + 0.5, 100) + '%';
+        }
+    }
+}
+
+// Monitoring Panel Functions
+function updateMonitoringPanel() {
+    updateGPSTracking();
+    updateNotifications();
+    updateComplianceMetrics();
+}
+
+function updateGPSTracking() {
+    // Simulate real-time GPS updates
+    const trackingStats = document.querySelectorAll('#monitoring .track-value');
+    trackingStats.forEach((stat, index) => {
+        if (index === 1) { // Route efficiency
+            const currentValue = parseInt(stat.textContent);
+            if (Math.random() > 0.8) {
+                stat.textContent = Math.min(currentValue + 1, 99) + '%';
+            }
+        }
+    });
+}
+
+function updateNotifications() {
+    // Add new notifications periodically
+    const notificationTypes = [
+        { level: 'low', icon: '✅', title: 'Collection Complete', message: 'Zone C collection finished successfully' },
+        { level: 'medium', icon: '📍', title: 'Route Optimized', message: 'New efficient route calculated for Sector 12' },
+        { level: 'high', icon: '🚨', title: 'Maintenance Required', message: 'Vehicle WM-15 requires immediate service' }
+    ];
+    
+    if (Math.random() > 0.95) {
+        const randomNotif = notificationTypes[Math.floor(Math.random() * notificationTypes.length)];
+        // Add notification to the top of the list
+        console.log('New notification:', randomNotif.title);
+    }
+}
+
+function updateComplianceMetrics() {
+    // Update compliance percentages
+    const complianceBars = document.querySelectorAll('#monitoring .compliance-item .progress');
+    complianceBars.forEach((bar, index) => {
+        const currentWidth = parseInt(bar.style.width);
+        if (Math.random() > 0.9) {
+            const newWidth = Math.min(currentWidth + 1, 100);
+            bar.style.width = newWidth + '%';
+            
+            // Update text
+            const textElement = bar.parentElement.querySelector('span');
+            if (textElement) {
+                const status = newWidth >= 90 ? 'Excellent' : newWidth >= 80 ? 'Good' : 'Needs Improvement';
+                textElement.textContent = `${newWidth}% - ${status}`;
+            }
+        }
+    });
+}
+
 // Modal Functions
 function openModal(modalType) {
     const modal = document.getElementById('modal');
@@ -386,6 +490,15 @@ function openModal(modalType) {
     switch(modalType) {
         case 'training':
             content = generateTrainingContent();
+            break;
+        case 'ai-training':
+            content = generateAITrainingContent();
+            break;
+        case 'ai-classify':
+            content = generateAIClassifyContent();
+            break;
+        case 'gps-track':
+            content = generateGPSTrackContent();
             break;
         case 'compost':
             content = generateCompostContent();
@@ -419,6 +532,9 @@ function setupModalEventListeners(modalType) {
     switch(modalType) {
         case 'training':
             setupTrainingModal();
+            break;
+        case 'ai-training':
+            setupAITrainingModal();
             break;
         case 'report':
             setupReportModal();
@@ -467,6 +583,42 @@ function setupTrainingModal() {
             }
         });
     }
+}
+
+function setupAITrainingModal() {
+    // Setup AI training specific interactions
+    window.selectAnswer = function(answer) {
+        if (answer === 'hazardous') {
+            showMessage('🎉 Correct! Batteries contain toxic materials and should be disposed as hazardous waste. You earned 50 EcoPoints!', 'success');
+            citizenData.ecoPoints += 50;
+            updateCitizenPanel();
+            updateRewardsPanel();
+            saveData('citizenData', citizenData);
+        } else {
+            showMessage('❌ Incorrect. Batteries contain toxic materials and should be classified as hazardous waste. Try again!', 'warning');
+        }
+    };
+    
+    window.continueAITraining = function() {
+        showMessage('🤖 AI Training module progressing! Complete all sections to earn bonus rewards.', 'success');
+        closeModal();
+    };
+    
+    window.triggerFileUpload = function() {
+        document.getElementById('waste-image').click();
+    };
+    
+    window.classifyWaste = function() {
+        const resultDiv = document.getElementById('classification-result');
+        if (resultDiv) {
+            resultDiv.style.display = 'block';
+            showMessage('🔍 AI Classification complete! Waste identified with 94% confidence.', 'success');
+            citizenData.ecoPoints += 25;
+            updateCitizenPanel();
+            updateRewardsPanel();
+            saveData('citizenData', citizenData);
+        }
+    };
 }
 
 function setupReportModal() {
@@ -522,6 +674,122 @@ function generateTrainingContent() {
             <p>⏳ Not Started - Maximizing recycling efficiency</p>
         </div>
         <button class="action-btn" onclick="startTraining()" style="width: 100%;">Continue Training</button>
+    `;
+}
+
+function generateAITrainingContent() {
+    return `
+        <h2>🤖 AI-Powered Training Module</h2>
+        <div style="margin: 20px 0;">
+            <div style="background: linear-gradient(135deg, #4CAF50, #2196F3); padding: 20px; border-radius: 15px; color: white; margin-bottom: 20px;">
+                <h3>🎯 Interactive Learning Experience</h3>
+                <p>Complete quizzes and earn coupon rewards while learning waste management</p>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <h4>📚 Current Module: AI Waste Classification</h4>
+                <div class="progress-bar" style="margin: 10px 0;">
+                    <div class="progress" style="width: 65%;"></div>
+                </div>
+                <p>Learn how AI identifies different waste types automatically</p>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                <h4>🏆 Quiz Challenge</h4>
+                <p><strong>Question:</strong> Which waste type should batteries be classified as?</p>
+                <div style="margin: 10px 0;">
+                    <button onclick="selectAnswer('hazardous')" style="display: block; width: 100%; margin: 5px 0; padding: 10px; background: #e3f2fd; border: 2px solid #2196F3; border-radius: 5px; cursor: pointer;">🔴 Hazardous Waste</button>
+                    <button onclick="selectAnswer('dry')" style="display: block; width: 100%; margin: 5px 0; padding: 10px; background: #f3e5f5; border: 2px solid #9c27b0; border-radius: 5px; cursor: pointer;">🔵 Dry Waste</button>
+                    <button onclick="selectAnswer('wet')" style="display: block; width: 100%; margin: 5px 0; padding: 10px; background: #e8f5e8; border: 2px solid #4caf50; border-radius: 5px; cursor: pointer;">🟢 Wet Waste</button>
+                </div>
+            </div>
+            
+            <div style="background: #fff3e0; padding: 15px; border-radius: 10px;">
+                <h4>🎁 Reward Progress</h4>
+                <p>Complete this module to earn:</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>200 EcoPoints</li>
+                    <li>₹50 Shopping Coupon</li>
+                    <li>AI Classification Badge</li>
+                </ul>
+            </div>
+        </div>
+        <button class="action-btn" onclick="continueAITraining()" style="width: 100%;">Continue Learning</button>
+    `;
+}
+
+function generateAIClassifyContent() {
+    return `
+        <h2>🔍 AI Waste Classifier</h2>
+        <div style="margin: 20px 0;">
+            <div style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4); padding: 20px; border-radius: 15px; color: white; margin-bottom: 20px; text-align: center;">
+                <h3>📸 Smart Waste Recognition</h3>
+                <p>Upload an image and let AI classify your waste instantly</p>
+                <div style="font-size: 2rem; margin: 10px 0;">96% Accuracy</div>
+            </div>
+            
+            <div style="border: 3px dashed #ddd; padding: 40px; text-align: center; border-radius: 15px; margin: 20px 0; cursor: pointer;" onclick="triggerFileUpload()">
+                <div style="font-size: 3rem; margin-bottom: 10px;">📷</div>
+                <h4>Upload Waste Image</h4>
+                <p>Drag & drop or click to select image</p>
+                <input type="file" id="waste-image" accept="image/*" style="display: none;">
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px;">
+                <h4>🤖 AI Classification Results</h4>
+                <div id="classification-result" style="display: none;">
+                    <div style="background: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong>🟢 Classification: Organic Waste</strong>
+                        <p>Confidence: 94%</p>
+                        <p><strong>Disposal Method:</strong> Compost bin or wet waste collection</p>
+                    </div>
+                </div>
+                <p style="color: #666; font-size: 0.9em;">AI will analyze the image and provide classification with disposal instructions</p>
+            </div>
+        </div>
+        <button class="action-btn" onclick="classifyWaste()" style="width: 100%;">Classify Waste</button>
+    `;
+}
+
+function generateGPSTrackContent() {
+    return `
+        <h2>📍 GPS Tracking & Route Optimization</h2>
+        <div style="margin: 20px 0;">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 20px; border-radius: 15px; color: white; margin-bottom: 20px;">
+                <h3>🗺️ Real-time Location Services</h3>
+                <p>Track collection vehicles and optimize routes automatically</p>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                <h4>🚛 Active Vehicle Tracking</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 1.5rem; color: #4CAF50;">12</div>
+                        <div>Active Vehicles</div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 1.5rem; color: #2196F3;">94%</div>
+                        <div>Route Efficiency</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                <h4>⚡ Auto-Escalation Features</h4>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Mandatory GPS tracking with timestamp</li>
+                    <li>Offline-first sync support</li>
+                    <li>3-day deadline with auto-escalation</li>
+                    <li>Rating system for worker performance</li>
+                </ul>
+            </div>
+            
+            <div style="background: #fff3e0; padding: 15px; border-radius: 10px;">
+                <h4>🔒 Privacy & Security</h4>
+                <p>Data encryption, role-based access, and OTP login ensure complete security</p>
+            </div>
+        </div>
+        <button class="action-btn" onclick="enableGPSTracking()" style="width: 100%;">Enable GPS Tracking</button>
     `;
 }
 
@@ -764,6 +1032,26 @@ function enableNotifications() {
         });
     } else {
         showMessage('❌ Your browser does not support notifications.', 'warning');
+    }
+    closeModal();
+}
+
+function enableGPSTracking() {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                showMessage('📍 GPS tracking enabled! Your location will be used for route optimization.', 'success');
+                citizenData.ecoPoints += 30;
+                updateCitizenPanel();
+                updateRewardsPanel();
+                saveData('citizenData', citizenData);
+            },
+            function(error) {
+                showMessage('❌ GPS access denied. Please enable location services.', 'warning');
+            }
+        );
+    } else {
+        showMessage('❌ GPS not supported on this device.', 'warning');
     }
     closeModal();
 }
