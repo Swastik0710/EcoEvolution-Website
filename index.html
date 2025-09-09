@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoEvolution - Waste Segregation Management System</title>
+    <title>Unified Digital Waste Management Platform - Smart India Hackathon 2025</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,6 +28,8 @@
                 <button class="nav-btn" onclick="showPanel('citizen')">Citizens</button>
                 <button class="nav-btn" onclick="showPanel('worker')">Workers</button>
                 <button class="nav-btn" onclick="showPanel('government')">Government</button>
+                <button class="nav-btn" onclick="showPanel('training')">AI Training</button>
+                <button class="nav-btn" onclick="showPanel('monitoring')">Live Monitoring</button>
                 <button class="nav-btn" onclick="showPanel('rewards')">Rewards</button>
             </nav>
         </div>
@@ -40,16 +43,16 @@
                 <p class="hero-subtitle">Together, we can achieve 100% scientific waste treatment and build a cleaner, greener India</p>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number">1.7L</div>
-                        <div class="stat-label">Tonnes Daily Waste</div>
+                        <div class="stat-number">22%</div>
+                        <div class="stat-label">Waste Reduction Achieved</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">54%</div>
-                        <div class="stat-label">Currently Treated</div>
+                        <div class="stat-number">AI-Powered</div>
+                        <div class="stat-label">Waste Classification</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">46%</div>
-                        <div class="stat-label">Needs Intervention</div>
+                        <div class="stat-number">IoT Ready</div>
+                        <div class="stat-label">Smart Bin Integration</div>
                     </div>
                 </div>
             </div>
@@ -75,6 +78,18 @@
                         <div class="access-icon">🏛️</div>
                         <h3>Government Portal</h3>
                         <p>Monitor progress, analytics, policy implementation</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                    <div class="access-card" onclick="showPanel('training')">
+                        <div class="access-icon">🤖</div>
+                        <h3>AI Training Hub</h3>
+                        <p>Digital certification, waste classification training</p>
+                        <button class="cta-btn">Access Portal</button>
+                    </div>
+                    <div class="access-card" onclick="showPanel('monitoring')">
+                        <div class="access-icon">📊</div>
+                        <h3>Live Monitoring</h3>
+                        <p>Real-time tracking, GPS integration, compliance monitoring</p>
                         <button class="cta-btn">Access Portal</button>
                     </div>
                     <div class="access-card" onclick="showPanel('rewards')">
@@ -166,10 +181,12 @@
                 <div class="dashboard-card">
                     <h3>📱 Quick Actions</h3>
                     <div class="quick-actions">
-                        <button class="action-btn" onclick="openModal('training')">📚 Take Training</button>
+                        <button class="action-btn" onclick="openModal('ai-training')">🤖 AI Training</button>
                         <button class="action-btn" onclick="openModal('compost')">🌱 Compost Kit</button>
                         <button class="action-btn" onclick="openModal('report')">📸 Report Dumping</button>
                         <button class="action-btn" onclick="openModal('track')">🚛 Track Vehicle</button>
+                        <button class="action-btn" onclick="openModal('classify')">🔍 AI Classifier</button>
+                        <button class="action-btn" onclick="openModal('gps-track')">📍 GPS Tracking</button>
                     </div>
                 </div>
             </div>
@@ -378,12 +395,262 @@
         </div>
     </div>
 
+    <!-- AI Training Panel -->
+    <div id="training" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>🤖 AI Training Hub</h1>
+                <p>Digital certification and AI-powered waste classification training</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>🎓 Digital Certification Modules</h3>
+                    <div class="training-modules">
+                        <div class="module-item completed">
+                            <div class="module-icon">✅</div>
+                            <div class="module-content">
+                                <strong>Basic Waste Segregation</strong>
+                                <p>Digital certification completed</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="module-item current">
+                            <div class="module-icon">📚</div>
+                            <div class="module-content">
+                                <strong>AI Waste Classification</strong>
+                                <p>Learning AI-powered identification</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="module-item pending">
+                            <div class="module-icon">🏆</div>
+                            <div class="module-content">
+                                <strong>Advanced Composting</strong>
+                                <p>Expert level certification</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🤖 AI Waste Classifier</h3>
+                    <div class="ai-classifier">
+                        <div class="upload-zone" onclick="openModal('ai-classify')">
+                            <div class="upload-icon">📷</div>
+                            <p>Upload or capture waste image</p>
+                            <p class="upload-subtitle">AI will classify and suggest proper disposal</p>
+                        </div>
+                        <div class="classification-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">1.2k</span>
+                                <span class="stat-label">Classifications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📊 Training Analytics</h3>
+                    <div class="training-analytics">
+                        <div class="analytics-item">
+                            <div class="analytics-icon">🎯</div>
+                            <div class="analytics-content">
+                                <strong>Completion Rate</strong>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 78%;"></div>
+                                </div>
+                                <span>78% Complete</span>
+                            </div>
+                        </div>
+                        <div class="analytics-item">
+                            <div class="analytics-icon">⭐</div>
+                            <div class="analytics-content">
+                                <strong>Performance Score</strong>
+                                <div class="score-display">92/100</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🏅 Certifications Earned</h3>
+                    <div class="certifications">
+                        <div class="cert-item earned">
+                            <div class="cert-badge">🥇</div>
+                            <div class="cert-info">
+                                <strong>Waste Segregation Expert</strong>
+                                <p>Issued: Jan 2024</p>
+                            </div>
+                        </div>
+                        <div class="cert-item earned">
+                            <div class="cert-badge">🥈</div>
+                            <div class="cert-info">
+                                <strong>Digital Compliance Officer</strong>
+                                <p>Issued: Feb 2024</p>
+                            </div>
+                        </div>
+                        <div class="cert-item locked">
+                            <div class="cert-badge">🥉</div>
+                            <div class="cert-info">
+                                <strong>Community Champion</strong>
+                                <p>Complete all modules to unlock</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Monitoring Panel -->
+    <div id="monitoring" class="panel">
+        <div class="container">
+            <div class="panel-header">
+                <h1>📊 Live Monitoring Dashboard</h1>
+                <p>Real-time tracking with GPS integration and compliance monitoring</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>🗺️ GPS Tracking & Route Optimization</h3>
+                    <div class="gps-tracking">
+                        <div class="map-placeholder">
+                            <div class="map-icon">🗺️</div>
+                            <p>Live GPS Tracking Active</p>
+                            <div class="tracking-stats">
+                                <div class="track-item">
+                                    <span class="track-label">Active Vehicles:</span>
+                                    <span class="track-value">12</span>
+                                </div>
+                                <div class="track-item">
+                                    <span class="track-label">Route Efficiency:</span>
+                                    <span class="track-value">94%</span>
+                                </div>
+                                <div class="track-item">
+                                    <span class="track-label">Avg Response Time:</span>
+                                    <span class="track-value">8 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📱 Real-time Notifications</h3>
+                    <div class="notifications-panel">
+                        <div class="notification-item high">
+                            <div class="notif-icon">🚨</div>
+                            <div class="notif-content">
+                                <strong>Bin Overflow Alert</strong>
+                                <p>Sector 15-A requires immediate attention</p>
+                                <span class="notif-time">2 min ago</span>
+                            </div>
+                        </div>
+                        <div class="notification-item medium">
+                            <div class="notif-icon">📍</div>
+                            <div class="notif-content">
+                                <strong>Collection Complete</strong>
+                                <p>Zone B collection finished ahead of schedule</p>
+                                <span class="notif-time">15 min ago</span>
+                            </div>
+                        </div>
+                        <div class="notification-item low">
+                            <div class="notif-icon">⚡</div>
+                            <div class="notif-content">
+                                <strong>System Update</strong>
+                                <p>AI classifier accuracy improved to 96%</p>
+                                <span class="notif-time">1 hour ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>📊 Compliance Monitoring</h3>
+                    <div class="compliance-grid">
+                        <div class="compliance-item good">
+                            <div class="compliance-icon">✅</div>
+                            <div class="compliance-content">
+                                <strong>Segregation Compliance</strong>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 89%;"></div>
+                                </div>
+                                <span>89% - Good</span>
+                            </div>
+                        </div>
+                        <div class="compliance-item excellent">
+                            <div class="compliance-icon">🏆</div>
+                            <div class="compliance-content">
+                                <strong>Collection Timeliness</strong>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 96%;"></div>
+                                </div>
+                                <span>96% - Excellent</span>
+                            </div>
+                        </div>
+                        <div class="compliance-item needs-improvement">
+                            <div class="compliance-icon">⚠️</div>
+                            <div class="compliance-content">
+                                <strong>Worker Safety</strong>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 73%;"></div>
+                                </div>
+                                <span>73% - Needs Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🔄 Auto-Escalation System</h3>
+                    <div class="escalation-system">
+                        <div class="escalation-flow">
+                            <div class="escalation-step active">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>Issue Detected</strong>
+                                    <p>Auto-detection via IoT sensors</p>
+                                </div>
+                            </div>
+                            <div class="escalation-step active">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>Worker Notified</strong>
+                                    <p>Immediate SMS/App notification</p>
+                                </div>
+                            </div>
+                            <div class="escalation-step pending">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>Admin Escalation</strong>
+                                    <p>Auto-escalate after 3-day deadline</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Rewards Panel -->
     <div id="rewards" class="panel">
         <div class="container">
             <div class="panel-header">
-                <h1>🏆 Rewards & Recognition</h1>
-                <p>Celebrating environmental champions and sustainable practices</p>
+                <h1>🏆 Gamified Rewards & Eco-Marketplace</h1>
+                <p>Earn rewards through responsible waste management and redeem at our eco-marketplace</p>
             </div>
 
             <div class="dashboard-grid">
